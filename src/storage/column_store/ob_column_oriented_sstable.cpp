@@ -694,7 +694,7 @@ int ObCOSSTableV2::scan(
     if (OB_FAIL(ObSSTable::scan(param, context, key_range, row_iter))) {
       LOG_WARN("Fail to scan in row store sstable", K(ret));
     }
-  } else if (!param.vectorized_enabled_ && param.enable_pd_aggregate() && param.agg_cols_project_->at(0) != OB_COUNT_AGG_PD_COLUMN_ID && context.block_row_store_->filter_is_null()) {
+  } else if (!param.vectorized_enabled_ && param.enable_pd_aggregate() && param.agg_cols_project_->at(0) == OB_COUNT_AGG_PD_COLUMN_ID && context.block_row_store_->filter_is_null()) {
     if (OB_FAIL(ObSSTable::scan(param, context, key_range, row_iter))) {
       LOG_WARN("Fail to scan in row store sstable", K(ret));
     }
